@@ -2,7 +2,12 @@ package com.balahudong.config;
 
 import java.util.Properties;
 
+import com.balahudong.controller.IndexController;
+import com.balahudong.controller.LoginCheckController;
 import com.balahudong.controller.SendMessageController;
+import com.balahudong.routes.AdminRoutes;
+import com.balahudong.routes.FrontRoutes;
+import com.balahudong.routes.RemoteRoutes;
 import com.jfinal.config.Constants;
 import com.jfinal.config.Handlers;
 import com.jfinal.config.Interceptors;
@@ -29,8 +34,9 @@ public class Config extends JFinalConfig {
 
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/sendMessage", SendMessageController.class);
-
+		me.add(new AdminRoutes());
+		me.add(new FrontRoutes());
+		me.add(new RemoteRoutes());
 	}
 
 	@Override
